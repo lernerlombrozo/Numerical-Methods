@@ -1,7 +1,7 @@
 //integrals
 
 min=0;
-max=0.59629;
+max=0.9;
 steps=1000;
 method="ave";
 
@@ -43,10 +43,11 @@ function integrate(min,max,step,method){
 }
 
 function functionToUse(x){
-    return reactor_design_assignment_1_question_4prof(x);
+    return reactor_design_assignment_8_question_1(x);
 }
 
 function reactor_design_assignment_1_question_1(x) {
+    // calculate the volume of a PFR with 60% conversion. max = 0.6;
     const R = 0.0821 / 1000; //atm * m3/ (mol * K)
     const P = 1; //atm
     const T = 273 + 60; //K
@@ -74,4 +75,15 @@ function reactor_design_assignment_1_question_4(x) {
   var CA = FA / QT; //mol/m^3
   var CB = FB / QT; //mol/m^3
   return (FAo * 1) / (k * CA * CB);
+}
+
+function reactor_design_assignment_8_question_1(x) {
+    const CAo = 30; //mol/m^3reactor
+    const kv = 1; //m3reactor/(mol s)(m^6reactor/m^6catalyst)
+    const Q = 1; //m^3/s
+    const FAo = CAo*Q; // mol/s
+    const porosity = 0.4; // m^3nocatalyst/m^3reactor
+    var tiele = 10*Math.sqrt(1-x);
+    var effectivenessFactor = (1.0357 + 0.3172 * tiele + 0.000437 * Math.pow(tiele, 2)) / (1 + 0.4172 * tiele + 0.139 * Math.pow(tiele, 2))
+    return FAo / (Math.pow((1 - x),2) * effectivenessFactor) / (kv * Math.pow(CAo, 2) * (1 - porosity));
 }

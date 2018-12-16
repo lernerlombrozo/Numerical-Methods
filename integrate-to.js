@@ -35,6 +35,7 @@ function reactor_design_assignment_1_question_1(x) {
 }
 
 function reactor_design_assignment_1_question_4(x) {
+    // PFR with a voulume of 1 m^3 make valueToObtain = 1;
     const R = 8.314; //Pa*m3/(mol K)
     const P = 100000; //Pa
     const FAo = 40; //mol/s
