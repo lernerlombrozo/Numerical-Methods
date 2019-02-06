@@ -2,7 +2,7 @@ min = -1;
 max = 1;
 error=0.0000000000001;
 
-result = solveForX(min, max, error,"bisection");
+result = solveForX(min, max, error);
 
 console.log("result= ", result)
 
@@ -10,7 +10,6 @@ function solveForX(min, max, error , method){
     var Left = error + 1;
     var Right = 0;
     var ave = (min + max) / 2;
-    if(method === "bisection"){
         while ( Math.abs(Left-Right)>error){
             Left = catalysis_eq_constant_presure_LHS(ave);
             Right = RHS(ave);
@@ -21,7 +20,6 @@ function solveForX(min, max, error , method){
             }
             var ave = (min + max) / 2;
         }
-    }
     return ave;
 }
 
